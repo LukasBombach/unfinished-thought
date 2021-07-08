@@ -1,5 +1,11 @@
 import { app } from "styles/styles.css";
+import "styles/global.css";
 
-export default function Index() {
-  return <pre className={app}>{JSON.stringify({}, null, 2)}</pre>;
+export default function Home() {
+  return (
+    <div className={app}>
+      hello
+      <div>world</div>
+    </div>
+  );
 }

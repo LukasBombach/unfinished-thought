@@ -1,6 +1,6 @@
 import { createAtomicStyles, createAtomsFn } from "@vanilla-extract/sprinkles";
 
-const font = {
+const fonts = {
   sans: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif`,
 };
 
@@ -27,7 +27,7 @@ const responsiveStyles = createAtomicStyles({
   },
   defaultCondition: "mobile",
   properties: {
-    font: font,
+    fontFamily: fonts,
     display: ["none", "flex", "block", "inline"],
     flexDirection: ["row", "column"],
     justifyContent: [
