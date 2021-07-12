@@ -3,12 +3,14 @@ import { join } from "path";
 import matter from "gray-matter";
 
 export interface Post {
-  title: string;
-  date: string;
-  slug: string;
   author: string;
+  content: string;
   coverImage: string;
+  date: string;
   excerpt: string;
+  ogImage: string;
+  slug: string;
+  title: string;
 }
 
 const postsDirectory = join(process.cwd(), "_posts");
