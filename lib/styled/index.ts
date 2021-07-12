@@ -9,6 +9,9 @@ export const { styled, css, global, keyframes, getCssString, theme } =
       fonts: {
         sans: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif`,
       },
+      space: {
+        16: "16px",
+      },
     },
     media: {
       mobile: "",

@@ -8,7 +8,9 @@ const Article = styled("article", {
 });
 
 const Link = styled("a", {
+  textDecoration: "none",
   "&::before": {
+    content: "''",
     position: "absolute",
     inset: 0,
   },
