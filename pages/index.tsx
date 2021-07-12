@@ -1,19 +1,24 @@
 import { getAllPosts } from "../lib/api";
 import { Teaser } from "components/Teaser";
+import { styled } from "lib/styled";
 
-import { app } from "styles/styles.css";
-import "styles/global.css";
+import "lib/styled/global.css";
 
 import type { VFC } from "react";
 import type { Post } from "lib/api";
 
+export const App = styled("main", {
+  fontFamily: "sans",
+  color: "dark-blue",
+});
+
 const Home: VFC<{ allPosts: Post[] }> = ({ allPosts }) => {
   return (
-    <div className={app}>
+    <App>
       {allPosts.map(post => (
         <Teaser key={post.slug} post={post} />
       ))}
-    </div>
+    </App>
   );
 };
 
