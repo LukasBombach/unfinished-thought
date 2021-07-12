@@ -1,4 +1,4 @@
-import { getAllPosts } from "../lib/api";
+import { getAllPosts } from "lib/api";
 import { Teaser } from "components/Teaser";
 import { Layout } from "components/Layout";
 

@@ -1,4 +1,3 @@
-import { style, composeStyles } from "@vanilla-extract/css";
 import { styled } from "lib/styled";
 
 import type { VFC } from "react";
@@ -9,7 +8,7 @@ const Article = styled("article", {
 });
 
 const Link = styled("a", {
-  ":after": {
+  "&::before": {
     position: "absolute",
     inset: 0,
   },

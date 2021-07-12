@@ -1,4 +1,4 @@
-import { getPostBySlug, getAllPosts } from "../../lib/api";
+import { getPostBySlug, getAllPosts } from "lib/api";
 import markdownToHtml from "lib/markdownToHtml";
 
 import type { VFC } from "react";
