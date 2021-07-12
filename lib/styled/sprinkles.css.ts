@@ -23,6 +23,7 @@ const responsiveStyles = createAtomicStyles({
   defaultCondition: "mobile",
   properties: {
     fontFamily: fonts,
+    position: ["relative", "absolute"],
     display: ["none", "flex", "block", "inline"],
     flexDirection: ["row", "column"],
     justifyContent: [
@@ -38,6 +39,7 @@ const responsiveStyles = createAtomicStyles({
     paddingBottom: space,
     paddingLeft: space,
     paddingRight: space,
+    inset: [0],
   },
   shorthands: {
     padding: ["paddingTop", "paddingBottom", "paddingLeft", "paddingRight"],

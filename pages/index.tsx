@@ -1,39 +1,25 @@
 import { getAllPosts } from "../lib/api";
 import { Teaser } from "components/Teaser";
-import { styled } from "lib/styled";
-
-import "lib/styled/global.css";
+import { Layout } from "components/Layout";
 
 import type { VFC } from "react";
 import type { Post } from "lib/api";
 
-export const App = styled("main", {
-  fontFamily: "sans",
-  color: "dark-blue",
-});
-
-const Home: VFC<{ allPosts: Post[] }> = ({ allPosts }) => {
+const Home: VFC<{ posts: Post[] }> = ({ posts }) => {
   return (
-    <App>
-      {allPosts.map(post => (
+    <Layout>
+      {posts.map(post => (
         <Teaser key={post.slug} post={post} />
       ))}
-    </App>
+    </Layout>
   );
 };
 
 export async function getStaticProps() {
-  const allPosts = getAllPosts([
-    "title",
-    "date",
-    "slug",
-    "author",
-    "coverImage",
-    "excerpt",
-  ]);
+  const posts = getAllPosts(["title", "slug", "excerpt"]);
 
   return {
-    props: { allPosts },
+    props: { posts },
   };
 }
 
