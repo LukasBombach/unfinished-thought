@@ -8,12 +8,14 @@ import type { Post } from "lib/api";
 
 const Home: VFC<{ posts: Post[] }> = ({ posts }) => {
   return (
-    <Layout>
+    <>
       <Header />
-      {posts.map(post => (
-        <Teaser key={post.slug} post={post} />
-      ))}
-    </Layout>
+      <Layout>
+        {posts.map(post => (
+          <Teaser key={post.slug} post={post} />
+        ))}
+      </Layout>
+    </>
   );
 };
 
