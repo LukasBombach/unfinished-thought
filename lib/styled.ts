@@ -13,6 +13,7 @@ export const { styled, css, global, keyframes, getCssString, theme } =
       },
       fontSizes: {
         20: "20px",
+        22: "22px",
       },
       lineHeights: {
         "16": "1.6em",

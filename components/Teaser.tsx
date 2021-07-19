@@ -8,6 +8,7 @@ const Article = styled("article", {
 });
 
 const Title = styled("h2", {
+  fontSize: "$22",
   lineHeight: "$16",
 });
 
