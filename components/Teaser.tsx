@@ -8,7 +8,7 @@ const Article = styled("article", {
 });
 
 const Title = styled("h2", {
-  lineHeight: "$20",
+  lineHeight: "$16",
 });
 
 const Link = styled("a", {

@@ -6,6 +6,7 @@ export const { styled, css, global, keyframes, getCssString, theme } =
       colors: {
         white: "#fff",
         darkBlue: "#3a4655",
+        faded: "#66788f",
       },
       space: {
         16: "16px",
@@ -14,8 +15,7 @@ export const { styled, css, global, keyframes, getCssString, theme } =
         20: "20px",
       },
       lineHeights: {
-        "16": "1.6rem",
-        "20": "1.6em",
+        "16": "1.6em",
       },
     },
     media: {
