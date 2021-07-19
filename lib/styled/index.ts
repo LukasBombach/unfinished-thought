@@ -4,17 +4,30 @@ export const { styled, css, global, keyframes, getCssString, theme } =
   createCss({
     theme: {
       colors: {
-        darkBlue: "#3A4655",
-      },
-      fonts: {
-        sans: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif`,
+        white: "#fff",
+        darkBlue: "#3a4655",
       },
       space: {
         16: "16px",
+      },
+      fontSizes: {
+        20: "20px",
+      },
+      lineHeights: {
+        "16": "1.6rem",
+        "20": "1.6em",
       },
     },
     media: {
       mobile: "",
       tablet: "screen and (min-width: 768px)",
+      dark: "(prefers-color-scheme: dark)",
     },
   });
+
+export const darkTheme = theme({
+  colors: {
+    white: "#1f2d3d",
+    darkBlue: "#fff",
+  },
+});

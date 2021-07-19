@@ -7,20 +7,28 @@ const Article = styled("article", {
   position: "relative",
 });
 
+const Title = styled("h2", {
+  lineHeight: "$20",
+});
+
 const Link = styled("a", {
   textDecoration: "none",
   "&::before": {
     content: "''",
     position: "absolute",
-    inset: 0,
+    //inset: 0,
   },
+});
+
+const Excerpt = styled("blockquote", {
+  fontFamily: "serif",
 });
 
 export const Teaser: VFC<{ post: Post }> = ({ post }) => (
   <Article>
-    <h2 key={post.slug}>
+    <Title key={post.slug}>
       <Link href={`/posts/${post.slug}`}>{post.title}</Link>
-    </h2>
-    <blockquote>{post.excerpt}</blockquote>
+    </Title>
+    <Excerpt>{post.excerpt}</Excerpt>
   </Article>
 );

@@ -1,7 +1,9 @@
 import { styled } from "lib/styled";
 
 export const Layout = styled("main", {
-  fontFamily: "$sans",
+  fontFamily: "sans-serif",
   color: "$darkBlue",
   padding: "0 $16",
+  fontSize: "$20",
+  lineHeight: "$16",
 });
