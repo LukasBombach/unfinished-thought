@@ -1,7 +1,7 @@
 import { global } from "lib/styled";
 
 const resetCss = global({
-  "html, body, h1, h2, p, blockquote": { margin: 0, padding: 0 },
+  "html, body, h1, h2, p, blockquote, ul, li": { margin: 0, padding: 0 },
   // This is terrible, don't do this! haha!
   "#__next": {
     fontFamily: "sans-serif",
@@ -13,10 +13,9 @@ const resetCss = global({
     padding: "$48 $16",
     margin: "0 auto",
     maxWidth: 720,
-    // WebkitFontSmoothing: "antialiased",
-    // MozOsxFontSmoothing: "grayscale",
   },
-  a: { color: "inherit" },
+  a: { color: "inherit", textDecoration: "none" },
+  ul: { listStyle: "none" },
 });
 
 export default function App({ Component, pageProps }) {

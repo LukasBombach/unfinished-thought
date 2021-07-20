@@ -15,6 +15,7 @@ export const { styled, css, global, keyframes, getCssString, theme } =
         48: "48px",
       },
       fontSizes: {
+        s: "18px",
         20: "20px",
         22: "22px",
       },

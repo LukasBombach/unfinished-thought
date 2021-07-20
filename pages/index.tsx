@@ -1,4 +1,5 @@
 import { Header } from "components/Header";
+import { SocialLinks } from "components/SocialLinks";
 import { TeaserList } from "components/TeaserList";
 import { getAllPosts } from "lib/api";
 
@@ -9,6 +10,7 @@ const Home: VFC<{ posts: PostPreview[] }> = ({ posts }) => {
   return (
     <>
       <Header />
+      <SocialLinks />
       <TeaserList posts={posts} />
     </>
   );
