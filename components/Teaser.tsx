@@ -17,12 +17,16 @@ const Link = styled("a", {
   "&::before": {
     content: "''",
     position: "absolute",
-    //inset: 0,
+    // inset: 0,
   },
 });
 
 const Excerpt = styled("blockquote", {
   fontFamily: "serif",
+  display: "-webkit-box",
+  WebkitBoxOrient: "vertical",
+  WebkitLineClamp: 2,
+  overflow: "hidden",
 });
 
 export const Teaser: VFC<{ post: Post }> = ({ post }) => (
