@@ -13,6 +13,8 @@ const resetCss = global({
     padding: "$48 $16",
     margin: "0 auto",
     maxWidth: 720,
+    // WebkitFontSmoothing: "antialiased",
+    // MozOsxFontSmoothing: "grayscale",
   },
   a: { color: "inherit" },
 });

@@ -8,7 +8,7 @@ const Article = styled("article", {
 });
 
 const Title = styled("h2", {
-  fontSize: "$22",
+  fontSize: "$20",
   lineHeight: "$16",
 });
 
@@ -23,10 +23,12 @@ const Link = styled("a", {
 
 const Excerpt = styled("blockquote", {
   fontFamily: "serif",
+  color: "$darkBlue",
   display: "-webkit-box",
   WebkitBoxOrient: "vertical",
   WebkitLineClamp: 2,
   overflow: "hidden",
+  opacity: 0.9, // todo make this a color
 });
 
 export const Teaser: VFC<{ post: Post }> = ({ post }) => (
