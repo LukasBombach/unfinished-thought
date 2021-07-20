@@ -2,14 +2,14 @@ import { Teaser } from "components/Teaser";
 import { styled } from "lib/styled";
 
 import type { VFC } from "react";
-import type { Post } from "lib/api";
+import type { PostPreview } from "components/Teaser";
 
 export const Main = styled("main", {
   display: "grid",
   gap: "$32",
 });
 
-export const TeaserList: VFC<{ posts: Post[] }> = ({ posts }) => {
+export const TeaserList: VFC<{ posts: PostPreview[] }> = ({ posts }) => {
   return (
     <Main>
       {posts.map(post => (

@@ -3,6 +3,8 @@ import { styled } from "lib/styled";
 import type { VFC } from "react";
 import type { Post } from "lib/api";
 
+export type PostPreview = Post<"title" | "slug" | "description">;
+
 const Article = styled("article", {
   position: "relative",
 });
@@ -31,11 +33,11 @@ const Excerpt = styled("blockquote", {
   opacity: 0.9, // todo make this a color
 });
 
-export const Teaser: VFC<{ post: Post }> = ({ post }) => (
+export const Teaser: VFC<{ post: PostPreview }> = ({ post }) => (
   <Article>
     <Title key={post.slug}>
       <Link href={`/posts/${post.slug}`}>{post.title}</Link>
     </Title>
-    <Excerpt>{post.excerpt}</Excerpt>
+    <Excerpt>{post.description}</Excerpt>
   </Article>
 );

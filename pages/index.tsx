@@ -3,9 +3,9 @@ import { TeaserList } from "components/TeaserList";
 import { getAllPosts } from "lib/api";
 
 import type { VFC } from "react";
-import type { Post } from "lib/api";
+import type { PostPreview } from "components/Teaser";
 
-const Home: VFC<{ posts: Post[] }> = ({ posts }) => {
+const Home: VFC<{ posts: PostPreview[] }> = ({ posts }) => {
   return (
     <>
       <Header />
@@ -15,7 +15,7 @@ const Home: VFC<{ posts: Post[] }> = ({ posts }) => {
 };
 
 export async function getStaticProps() {
-  const posts = getAllPosts(["title", "slug", "excerpt"]);
+  const posts = getAllPosts(["title", "slug", "description"]);
 
   return {
     props: { posts },

@@ -2,16 +2,11 @@ import fs from "fs";
 import { join } from "path";
 import matter from "gray-matter";
 
-export interface Post {
-  author: string;
-  content: string;
-  coverImage: string;
-  date: string;
-  excerpt: string;
-  ogImage: string;
-  slug: string;
-  title: string;
-}
+type Field = "slug" | "title" | "date" | "ogImage" | "description" | "content";
+
+export type Post<SelectedFields extends Field = Field> = {
+  [F in SelectedFields]: string;
+};
 
 const postsDirectory = join(process.cwd(), "_posts");
 
@@ -19,7 +14,10 @@ export function getPostSlugs() {
   return fs.readdirSync(postsDirectory);
 }
 
-export function getPostBySlug(slug: string, fields: string[] = []): Post {
+export function getPostBySlug<F extends Field>(
+  slug: string,
+  fields: F[] = []
+): Post<"date" | F> {
   const realSlug = slug.replace(/\.md$/, "");
   const fullPath = join(postsDirectory, `${realSlug}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
@@ -43,7 +41,7 @@ export function getPostBySlug(slug: string, fields: string[] = []): Post {
   return items;
 }
 
-export function getAllPosts(fields: string[] = []) {
+export function getAllPosts<F extends Field>(fields: F[] = []): Post<F>[] {
   const slugs = getPostSlugs();
   const posts = slugs
     .map(slug => getPostBySlug(slug, fields))
