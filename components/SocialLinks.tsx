@@ -3,7 +3,7 @@ import { styled } from "lib/styled";
 import type { VFC } from "react";
 
 const Aside = styled("aside", {
-  fontSize: "$s",
+  fontSize: "$18",
 });
 
 const List = styled("ul", {

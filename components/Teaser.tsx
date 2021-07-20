@@ -19,7 +19,8 @@ const Link = styled("a", {
   "&::before": {
     content: "''",
     position: "absolute",
-    // inset: 0,
+    inset: 0,
+    zIndex: 1,
   },
 });
 
