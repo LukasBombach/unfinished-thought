@@ -10,6 +10,9 @@ export const { styled, css, global, keyframes, getCssString, theme } =
       },
       space: {
         16: "16px",
+        24: "24px",
+        32: "32px",
+        48: "48px",
       },
       fontSizes: {
         20: "20px",

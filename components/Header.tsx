@@ -5,6 +5,7 @@ import type { VFC } from "react";
 
 const Container = styled("header", {
   display: "grid",
+  gap: "8px $16",
   gridTemplateColumns: "100px 1fr",
   gridTemplateRows: "50px 50px",
 });
@@ -20,6 +21,7 @@ const ProfileImage = styled("img", {
 const Headline = styled("h1", {
   gridColumn: "2 / 2",
   gridRow: "1 / 1",
+  alignSelf: "end",
 });
 
 const Subtitle = styled("p", {

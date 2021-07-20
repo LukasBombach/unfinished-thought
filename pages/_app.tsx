@@ -2,11 +2,17 @@ import { global } from "lib/styled";
 
 const resetCss = global({
   "html, body, h1, h2, p, blockquote": { margin: 0, padding: 0 },
-  body: {
+  // This is terrible, don't do this! haha!
+  "#__next": {
     fontFamily: "sans-serif",
     color: "$darkBlue",
     fontSize: "$20",
     lineHeight: "$16",
+    display: "grid",
+    gap: "$32",
+    padding: "$48 $16",
+    margin: "0 auto",
+    maxWidth: 720,
   },
   a: { color: "inherit" },
 });
