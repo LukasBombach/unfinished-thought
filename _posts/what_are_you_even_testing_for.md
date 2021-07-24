@@ -1,7 +1,7 @@
 ---
 title: "What are you even testing for?"
 description: ""
-date: "2020-03-16T05:35:07.322Z"
+date: "2021-07-26T00:00:00.322Z"
 ---
 
 I want to write a followup on [Kent C. Dodds' Post "Write tests. Not too many. Mostly integration."](https://kentcdodds.com/blog/write-tests) which tackles the question
@@ -71,11 +71,17 @@ and
 
 There is an analogy to psychology. When Sigmund Freud developed his theories of psychology he had a competitor in spirit named Alfred Adler. Freud described emotions as a product of your past experiences that leave you reacting in certain ways like a machine that has been set on course and is now playing out its program.
 
-Adler on the other hand saw emotions as a tool the subconcious part of yourself would use to deal with the world. So when a customer in a restaurant would get upset at the waiter for spilling a drink onto them, it was not because some earler experience would make them prone to anger, but because they had learned that anger can drive others into submission so they can get an excuse, help, or some reparation. Of couse the customer coould also just have asked kindly for all of this, but would have been harder and made them more vulnurable.
+Adler on the other hand saw emotions as a tool the subconcious part of yourself would use to deal with the world. So when a customer in a restaurant would get upset at the waiter for spilling a drink onto them, it was not because some earlier experience would make her prone to anger, but because she had learned that anger can drive others into submission so she can get an excuse, help, or some form of reparation. Of couse she could also just have asked kindly for all of this, but would have been harder and made them more vulnurable.
 
 Phew, back to computer science, where things are easy.
 
-So the analogy is this. Instead of asking why do we want to write tests, and understand something deep, we should look to the here and now (and the future) in practical terms. What do we want to write tests for?
+So the analogy is this. Instead of asking why do we want to write tests, and marvel over some misterious understanding of things that we hope to get right in some way, we should look to the here and now in simple practical terms. What do we want to use these specific tests for?
+
+Answer: We want to
+
+Answer: We want to make sure our business does not lose money.
+
+The hard truth is, most of us work for companies
 
 so the first part of the sentence, you should sleep well. There has often been uttered a phrase along the lines of "tests shoulf give you confidence that your project is free of bugs". You can't have that. It's not withing your cards. You cannot prove correctness. And you cannot possibly acount for all bugs that can happend in your system.
 
