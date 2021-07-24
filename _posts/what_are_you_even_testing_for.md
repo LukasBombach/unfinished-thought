@@ -77,4 +77,8 @@ Phew, back to computer science, where things are easy.
 
 So the analogy is this. Instead of asking why do we want to write tests, and understand something deep, we should look to the here and now (and the future) in practical terms. What do we want to write tests for?
 
-so the first part of the sentence, you should sleep well. There has often been uttered a phrase along the lines of "tests shoulf give you confidence that your project is free of bugs". You can't have that. It's not withing your cards. You cannot prove correctness. But you can aim for a good sleep. You cannot know you did everything right, but you can design your tests so that you can sleep peacefully, and that problems critical for your business, which will come back at you and your responsibility have been adressed well enough.
+so the first part of the sentence, you should sleep well. There has often been uttered a phrase along the lines of "tests shoulf give you confidence that your project is free of bugs". You can't have that. It's not withing your cards. You cannot prove correctness. And you cannot possibly acount for all bugs that can happend in your system.
+
+But you can aim for a good sleep. You can address the parts of your application that guarantee your business model, which is a subset of your application. You might feel insecure of whethere or not you wrote your tests right, but you can be confident enough you covered enough of your application
+
+You cannot know you did everything right, but you can design your tests so that you can sleep peacefully, and that problems critical for your business, which will come back at you and your responsibility have been adressed well enough.
