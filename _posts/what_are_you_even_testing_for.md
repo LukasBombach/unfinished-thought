@@ -76,3 +76,5 @@ Adler on the other hand saw emotions as a tool the subconcious part of yourself 
 Phew, back to computer science, where things are easy.
 
 So the analogy is this. Instead of asking why do we want to write tests, and understand something deep, we should look to the here and now (and the future) in practical terms. What do we want to write tests for?
+
+so the first part of the sentence, you should sleep well. There has often been uttered a phrase along the lines of "tests shoulf give you confidence that your project is free of bugs". You can't have that. It's not withing your cards. You cannot prove correctness. But you can aim for a good sleep. You cannot know you did everything right, but you can design your tests so that you can sleep peacefully, and that problems critical for your business, which will come back at you and your responsibility have been adressed well enough.
