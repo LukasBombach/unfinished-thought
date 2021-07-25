@@ -4,24 +4,11 @@ description: ""
 date: "2021-07-26T00:00:00.322Z"
 ---
 
-As a followup on [Kent C. Dodds' post "Write tests. Not too many. Mostly integration."](https://kentcdodds.com/blog/write-tests) I want to reiterate the question which tests to write and which tests not to write.
+As a followup on [Kent C. Dodds' post "Write tests. Not too many. Mostly integration."](https://kentcdodds.com/blog/write-tests) I want to reiterate the question which tests to write and which tests not to write. All of what this post says is correct, but when writing tests for a react component, a library or your application's architecture, arguments about the testing pyramid or code coverage will not tell you what part of your current feature you actually need to test and which parts you can ignore. You will also not get a feeling of confidence that your application will have no bugs.
 
-Many months ago my dear colleague [Patrick](https://twitter.com/patrickdahms) asked me to discuss our testing strategy. We knew we could write tests, we knew we could cover the entire testing pyramid, we knew all about the supposed amount of tests we're ought to put in each layer and and we also knew that if we wrote too many tests, we'd sacrifice the our ability to change our software easily.
+## A Practical example
 
-But no understanding of the the types of tests you can write nor how many of them there should be could answer our specifc question what part of a react component, a library or our architecture we should actually test and which parts we could leave untested<sup>\*</sup><br />
-<sub>\* or at best covered by tests targeted at something else</sub></center>
-
-## The answer
-
-I will get straight to the final sound bite and then elaborate. From the discussions we had, this would be my memorable quote
-
-> You should write tests so you can sleep peacefully knowing you will not have harmed your business
-
-I know, this does not sound very revealing, and absurdly unspecific again, but let me explain.
-
-## Practical example
-
-Say you have this kind of page in a react application
+Say you have this footer component in a react application
 
 ```jsx
 function MyPageFooter({ title, text }) {
@@ -37,10 +24,14 @@ function MyPageFooter({ title, text }) {
 }
 ```
 
-How would you test this? One classic argument would be that you don't really test UI so much. According to the testing pyramid your should barely write any tests here. Another lazy attempt would be to write a snapshot test for the entire component and be done with it.
+How would you test this? One classic argument would be that you don't really test UI so much. According to the testing pyramid your should barely write any tests here as UI is typically prone to change a lot. You could also argue that there is not much going on here and write a snapshot test for the entire component and be done.
 
-The first version would satisfy claims about the testing pyramid the latter version would bump test coverage to 100%. None of these paradigms can give you any guidance on what to test about this though. Both testing strategies would not make any statement on the validity or provide any reasoning why you would test it this way.
+The first version would satisfy claims about the testing pyramid the latter version would bump test coverage to 100%. None of these paradigms can give you any specific confidence (or guidance) what to actually do here. Would you test if the component wraps its content in a `<footer />` tag? Should you test that you integrated the sitemap? What about the other links? The testing pyramid and coverage provide no way of reasoning about this.
 
 I want to shine a different light on this: Business Value.
 
 ## Business value
+
+This argument is the result of the conversations I had with my dear colleague [Patrick](https://twitter.com/patrickdahms) who once asked me to discuss our "testing strategy". Patrick has a great way of asking what we want to achieve and if the things we are doing are actually supporting our goal.
+
+So in terms of testing, what do we want.
