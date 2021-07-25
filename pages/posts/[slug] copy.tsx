@@ -1,6 +1,9 @@
-import { styled } from "lib/styled";
+import { MDXProvider } from "@mdx-js/react";
+import { serialize } from "next-mdx-remote/serialize";
+import { MDXRemote } from "next-mdx-remote";
+import { CodeBlock } from "components/CodeBlock";
 import { getPostBySlug, getAllPosts } from "lib/api";
-import markdownToHtml from "lib/markdownToHtml";
+import { styled } from "lib/styled";
 
 import type { VFC } from "react";
 import type { Post } from "lib/api";
@@ -32,24 +35,35 @@ const Content = styled("section", {
   },
 });
 
+const components = {
+  pre: props => {
+    console.log("pre", props);
+    return <CodeBlock {...props} />;
+  },
+  code: props => {
+    console.log("code", props);
+    return <CodeBlock {...props} />;
+  },
+};
+
 const BlogEntry: VFC<{ post: Post }> = ({ post }) => {
   return (
-    <>
+    <MDXProvider components={components}>
       <Navigation>
         <LinkBack href="/">&larr; Back to posts overview</LinkBack>
       </Navigation>
 
       <Main>
         <Headline>{post.title}</Headline>
-        <Content dangerouslySetInnerHTML={{ __html: post.content }} />
+        <MDXRemote {...(post.content as any)} components={components} />
       </Main>
-    </>
+    </MDXProvider>
   );
 };
 
 export async function getStaticProps({ params }) {
   const post = getPostBySlug(params.slug, ["title", "date", "content"]);
-  const content = await markdownToHtml(post.content || "");
+  const content = await serialize(post.content);
 
   return {
     props: {

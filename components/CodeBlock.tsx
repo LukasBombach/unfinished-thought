@@ -1,14 +1,17 @@
 import Highlight, { defaultProps } from "prism-react-renderer";
 
-export default ({ children }) => {
+import type { VFC } from "react";
+// import type { HighlightProps } from "prism-react-renderer";
+
+export const CodeBlock: VFC<{ value: string }> = ({ value }) => {
   return (
-    <Highlight {...defaultProps} code={children} language="javascript">
+    <Highlight {...defaultProps} code={value} language="javascript">
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <pre className={className} style={{ ...style, padding: "20px" }}>
+        <pre className={className} style={style}>
           {tokens.map((line, i) => (
-            <div key={i} {...getLineProps({ line, key: i })}>
+            <div {...getLineProps({ line, key: i })}>
               {line.map((token, key) => (
-                <span key={key} {...getTokenProps({ token, key })} />
+                <span {...getTokenProps({ token, key })} />
               ))}
             </div>
           ))}
