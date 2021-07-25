@@ -124,3 +124,5 @@ describe("MyPageFooter", () => {
 ## What this means
 
 As you can see from these three examples, it does not quite matter if the test are integration tests (testing for a link in our component or one included through `<CompanyNetwork />`) or they test code from the component at hand, the point is to test things that we are critical for our business. Code coverage is also not important here.
+
+The importance of this is, that you can now reason about what parts of your code you need to test. Avoiding too many tests, creating an appropriate testing pyramid and keeping your agility when moving your project forward are all side effects of this. You will also conform to principles of software architecture like the [Single-responsibility principle](https://en.wikipedia.org/wiki/Single-responsibility_principle) which allow you to move your project forward without exerting more effort than needed.
