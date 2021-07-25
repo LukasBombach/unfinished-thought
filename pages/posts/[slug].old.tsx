@@ -2,8 +2,6 @@ import { styled } from "lib/styled";
 import { getPostBySlug, getAllPosts } from "lib/api";
 import markdownToHtml from "lib/markdownToHtml";
 
-import { MDXProvider } from "@mdx-js/react";
-
 import type { VFC } from "react";
 import type { Post } from "lib/api";
 
@@ -34,14 +32,9 @@ const Content = styled("section", {
   },
 });
 
-const components = {
-  pre: props => <div {...props} />,
-  code: props => <pre style={{ color: "tomato" }} {...props} />,
-};
-
 const BlogEntry: VFC<{ post: Post }> = ({ post }) => {
   return (
-    <MDXProvider components={components}>
+    <>
       <Navigation>
         <LinkBack href="/">&larr; Back to posts overview</LinkBack>
       </Navigation>
@@ -50,7 +43,7 @@ const BlogEntry: VFC<{ post: Post }> = ({ post }) => {
         <Headline>{post.title}</Headline>
         <Content dangerouslySetInnerHTML={{ __html: post.content }} />
       </Main>
-    </MDXProvider>
+    </>
   );
 };
 
