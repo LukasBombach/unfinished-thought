@@ -126,3 +126,48 @@ describe("MyPageFooter", () => {
 As you can see from these three examples, it does not quite matter if the test are integration tests (testing for a link in our component or one included through `<CompanyNetwork />`) or they test code from the component at hand, the point is to test things that we are critical for our business. Code coverage is also not important here.
 
 The importance of this is, that you can now reason about what parts of your code you need to test. Avoiding too many tests, creating an appropriate testing pyramid and keeping your agility when moving your project forward are all side effects of this. You will also conform to principles of software architecture like the [Single-responsibility principle](https://en.wikipedia.org/wiki/Single-responsibility_principle) which allow you to move your project forward without exerting more effort than needed.
+
+## Finalizing the pattern
+
+Patrick and I started a pattern on how to write tests, by using multiple describe blocks, grouping the reasons we write tests for
+
+```jsx
+// MyPageFooter.spec.js
+
+describe("Legal requirements", () => {
+  test("it should display a link to the imprint page", () => {
+    const { queryByText } = render(<MyPageFooter />);
+    const imprintLink = queryByText("Imprint");
+    expect(imprintLink).toBeInTheDocument();
+    expect(imprintLink).toHaveAttribute("href", "/imprint");
+  });
+});
+
+describe("Business Requriements", () => {
+  test("it should display a link to the jobs page", () => {
+    const { queryByText } = render(<MyPageFooter />);
+    const imprintLink = queryByText("We're hiring!");
+    expect(imprintLink).toBeInTheDocument();
+    expect(imprintLink).toHaveAttribute("href", "/jobs");
+  });
+});
+
+describe("SEO Requirements", () => {
+  test.each`
+    text     | url
+    ${"foo"} | ${"https://foo.com/"}
+    ${"bar"} | ${"https://bar.com/"}
+  `("it should display a link to $text", ({ text, url }) => {
+    const { queryByText } = render(<MyPageFooter />);
+    const imprintLink = queryByText(text);
+    expect(imprintLink).toBeInTheDocument();
+    expect(imprintLink).toHaveAttribute("href", url);
+  });
+});
+```
+
+Of course each block would hold more than one test and the tests themselves can probably be optimized in many ways (I do know of `getByText` :) ), but this should demonstrate the idea behind this approach.
+
+I need to mention [Patrick](https://twitter.com/patrickdahms) here once more and express my huge thanks and appreciation. He started the conversation and drove it into the direction we ended in.
+
+If you would like to talk to me about this article you can post on the [GitHub Discussions](https://github.com/LukasBombach/unfinished-thought/discussions) of this blog or @ me on Twitter as [@luke_schmuke](https://twitter.com/luke_schmuke).
