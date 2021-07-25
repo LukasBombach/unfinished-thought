@@ -4,87 +4,125 @@ description: ""
 date: "2021-07-26T00:00:00.322Z"
 ---
 
-I want to write a followup on [Kent C. Dodds' Post "Write tests. Not too many. Mostly integration."](https://kentcdodds.com/blog/write-tests) which tackles the question
-not how to write tests, but which tests to write.
+As a followup on [Kent C. Dodds' post "Write tests. Not too many. Mostly integration."](https://kentcdodds.com/blog/write-tests) I want to reiterate the question which tests to write and which tests not to write. All of what this post says is correct, but when writing tests for a react component, a library or your application's architecture, arguments about the testing pyramid or code coverage will not tell you what part of your current feature you actually need to test and which parts you can ignore. You will also not get a feeling of confidence that your application will have no bugs.
 
-A few months ago my dear colleague [Patrick](https://twitter.com/patrickdahms) asked me to discuss our testing strategy. We knew we could write tests, we knew we could cover the entire testing pyramid, we knew all about the supposed amount of tests we should put in each layer and and we also knew that if we wrote too many tests, we'd sacrifice all of our agility.
+## A Practical example
 
-<center>But none of this answered our question on which tests to write, and which parts of our code to leave untested<sup>*</sup><br />
-<sub>* or at best unspecifically covered by tests targeted at something else</sub></center>
+Say you have this footer component in a react application
 
-## The answer
+```jsx
+// MyPageFooter.js
 
-I will stop the yadda yadda right there and give our answer right away.
+function MyPageFooter({ title, text }) {
+  return (
+    <footer>
+      <a href="/imprint">Imprint</a>
+      <a href="http://twitter.com/OurCompany">OurCompany on Twitter</a>
+      <a href="http://facebook.com/OurCompany">Like us in Facebook</a>
+      <a href="/jobs">We're hiring!</a>
+      <CompanyNetwork />
+    </footer>
+  );
+}
+```
 
-> You should write tests so you can sleep peacefully knowing you will not have harmed your business
+How would you test this? One classic argument would be that you don't really test UI so much. According to the testing pyramid your should barely write any tests here as UI is typically prone to change a lot. You could also argue that there is not much going on here and write a snapshot test for the entire component and be done.
 
-I know, this does not sound very revealing, but let me explain.
+The first version would satisfy claims about the testing pyramid the latter version would bump test coverage to 100%. None of these paradigms can give you any specific confidence (or guidance) what to actually do here. Would you test if the component wraps its content in a `<footer />` tag? Should you test that you integrated the `<CompanyNetwork>`? What about the other links? The testing pyramid and coverage provide no way of reasoning about this.
 
-## Mistakes
+I want to shine a different light on this: Business Value.
 
-As Kent (I'm just gonna call you by your first name, very untypical for a German) points out, writing too many tests will create a firm grip on your current implementation that might be way to tight and you end up not being able to change things effortlessly.
+## Business value
 
-- The requirements of your application will change
-- The architecture of your appication will change
-- You will gain knowledge that makes you _want_ to refactor your code
-- You will find bugs and have to change things
+This argument is the result of the many conversations I had with my dear colleague [Patrick](https://twitter.com/patrickdahms) who once asked me to discuss our "testing strategy". Patrick has a great way of asking what we want to achieve and if the things we are doing are actually supporting our goal.
 
-When you learn about software architecture you will find a reoccurent notion that many books agree upon:
+So what do we want from testing?
 
-Your implementation will change over time.
+Knowing that our code is correct? No, as Edsger W. Dijkstra suggested, this is impossible. You cannot prove correctness of code. Strongly typed languages and paradigms of functional programming can harden your application, but however far you get with languages, paradigms, tools and tests, but the final wall you cannot suprass is that you cannot know how much you know. You can brute-force data and environments to run every feature of your application through every possible state, but you will then have to prove, that the code you wrote to test your code is also 100% correct. You see where this is going. This is simplfied and there is a lot more to say about this, but let us move on with the article.
 
-- During initial development
-- hen extending your product
-- even in maintenance mode
+Kent's article also mentioned that your goal should not be to test as much as you can, believing you thereby achieve the most safety against bugs you can get. If you tested any aspect of the component in our practical example and did that for every line of code in your project, you will probably spend way more time re-adjusting your tests than implementing a feature. You will run into a high risk of frustration which rarely leads to a successful project. The disciplines of software architecture usually put a great emphasis on projects ability to change (because software does that when being worked on) and this would be the end of this.
 
-So rather than architecting for the perfect system, you need to consider and optimize for changeability and extendability. If you wrote too many too specific tests, you will have to refactor all of those too, just to move forward. This will probably be frustrating and might leave you wishing to not write any more tests at all.
+So you need to be selective in what you want to test and this is where business value comes in. You want to make sure your software works, but you also want to avoid blindlessly increasing test coverage, crossing your fingers and hoping you prevented a bug somewhere. You need to focus on what's important.
 
-## You cannot test everything anyway
+In most cases, this means business value. Sorry, that is really uninspirational, but it is true for most paid work, even NGOs and your own startup. The thing that might make you feel better, is that you can be a good programmer—and a professional and that can be your own motivation. At least, it is for me.
 
-One of the elders of computer science, Edsger W. Dijkstra, already understood that it is impossible to prove correctness of an application—even with code that tests code. Like in science, you can falsify things. You can write code for specific scenarios and check if your code fails (or succeeds) in with under specific conditions.
+So to show what this means, let's go back to our practical example.
 
-> But you can never _prove_ that you accounted for all sutiations
+## Business value + The Practical example = What to test
 
-Even when brute-forcing environments and appication states, you cannot _guarantee_ your brute-force test code to be correct. There are a lot of approaches to make a reasonable case that your code _should_ really be correct, type systems help, functional programming has its ways of tackling this, but it is still hard to _prove_ to know that you know.
+Let's have a look again and try to figure out what's important here
 
-I am going to steal this one from Wikipedia's article on Falsifiability
+```jsx
+// MyPageFooter.js
 
-![](./what_are_you_even_testing_for/black_swans.jpg)
+function MyPageFooter({ title, text }) {
+  return (
+    <footer>
+      <a href="/imprint">Imprint</a>
+      <a href="http://twitter.com/OurCompany">OurCompany on Twitter</a>
+      <a href="http://facebook.com/OurCompany">Like us in Facebook</a>
+      <a href="/jobs">We're hiring!</a>
+      <CompanyNetwork />
+    </footer>
+  );
+}
+```
 
-> Even with no black swans to possibly falsify it, the hypothesis "All swans are white" would still be falsifiable—a black swan would still be an observable state of affairs (under the law all swans are white or black).
+Let's start with line `6`, the link to the imprint. In Germany, every website is legally obliged to display a link to your company's imprint on every page. So you might have stake holders in your company that need this be be there. Let's write a test for this in Jest:
 
-## On the other hand you have different fingers
+```jsx
+// MyPageFooter.spec.js
 
-Of course none of this makes the case of not writing tests at all. So on the one hand we are supposed to write tests, on the other hand we are not supposed to write too many tests. So how many tests are corrent?
+describe("MyPageFooter", () => {
+  test("it should display a link to the imprint page", () => {
+    const { queryByText } = render(<MyPageFooter />);
+    const imprintLink = queryByText("Imprint");
+    expect(imprintLink).toBeInTheDocument();
+    expect(imprintLink).toHaveAttribute("href", "/imprint");
+  });
+});
+```
 
-Well, the question must be which tests are correct.
+This will make sure the links is _there_ and points to the expeceted url. When you, 6 months later, or one of your colleagues change the code of this component, it is ensured this one stays here.
 
-## The purpose of tests, distingishing "why" and "what for"
+Lines `7-8`: For the purpose of demonstration, let's assume, your product people think those should be there, but your PO agrees, this is really not critical for our business. So we write no tests for this.
 
-To answer this question you must ask what you write tests for. I want to draw a line between asking
+Line `9`, hiring. Your company is in desperate need of software developers and marketing gurus. Your PO knows, this one has to be there. We're gonna write a test.
 
-"Why do you write tests"
+```jsx
+// MyPageFooter.spec.js
 
-and
+describe("MyPageFooter", () => {
+  test("it should display a link to the jobs page", () => {
+    const { queryByText } = render(<MyPageFooter />);
+    const imprintLink = queryByText("We're hiring!");
+    expect(imprintLink).toBeInTheDocument();
+    expect(imprintLink).toHaveAttribute("href", "/jobs");
+  });
+});
+```
 
-"What to write tests for"
+Line `10`, the CompanyNetwork: Your business owns more than one page. The colleagues from SEO make it clear we need to link to their website. So we write a test to make sure when our code changes, we get notified if we forget about this.
 
-There is an analogy to psychology. When Sigmund Freud developed his theories of psychology he had a competitor in spirit named Alfred Adler. Freud described emotions as a product of your past experiences that leave you reacting in certain ways like a machine that has been set on course and is now playing out its program.
+```jsx
+// MyPageFooter.spec.js
 
-Adler on the other hand saw emotions as a tool the subconcious part of yourself would use to deal with the world. So when a customer in a restaurant would get upset at the waiter for spilling a drink onto them, it was not because some earlier experience would make her prone to anger, but because she had learned that anger can drive others into submission so she can get an excuse, help, or some form of reparation. Of couse she could also just have asked kindly for all of this, but would have been harder and made them more vulnurable.
+describe("MyPageFooter", () => {
+  test.each`
+    text     | url
+    ${"foo"} | ${"https://foo.com/"}
+    ${"bar"} | ${"https://bar.com/"}
+  `("it should display a link to $text", ({ text, url }) => {
+    const { queryByText } = render(<MyPageFooter />);
+    const imprintLink = queryByText(text);
+    expect(imprintLink).toBeInTheDocument();
+    expect(imprintLink).toHaveAttribute("href", url);
+  });
+});
+```
 
-Phew, back to computer science, where things are easy.
+## What this means
 
-So the analogy is this. Instead of asking why do we want to write tests, and marvel over some misterious understanding of things that we hope to get right in some way, we should look to the here and now in simple practical terms. What do we want to use these specific tests for?
+As you can see from these three examples, it does not quite matter if the test are integration tests (testing for a link in our component or one included through `<CompanyNetwork />`) or they test code from the component at hand, the point is to test things that we are critical for our business. Code coverage is also not important here.
 
-Answer: We want to
-
-Answer: We want to make sure our business does not lose money.
-
-The hard truth is, most of us work for companies
-
-so the first part of the sentence, you should sleep well. There has often been uttered a phrase along the lines of "tests shoulf give you confidence that your project is free of bugs". You can't have that. It's not withing your cards. You cannot prove correctness. And you cannot possibly acount for all bugs that can happend in your system.
-
-But you can aim for a good sleep. You can address the parts of your application that guarantee your business model, which is a subset of your application. You might feel insecure of whethere or not you wrote your tests right, but you can be confident enough you covered enough of your application
-
-You cannot know you did everything right, but you can design your tests so that you can sleep peacefully, and that problems critical for your business, which will come back at you and your responsibility have been adressed well enough.
+The importance of this is, that you can now reason about what parts of your code you need to test. Avoiding too many tests, creating an appropriate testing pyramid and keeping your agility when moving your project forward are all side effects of this. You will also conform to principles of software architecture like the [Single-responsibility principle](https://en.wikipedia.org/wiki/Single-responsibility_principle) which allow you to move your project forward without exerting more effort than needed.
