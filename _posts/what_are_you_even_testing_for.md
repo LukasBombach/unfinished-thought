@@ -48,13 +48,11 @@ If you believe "well, let's test as much as we can then", as Kent's article desc
 
 So you need to be selective in what you want to test and this is where business value comes in. You want to make sure your software works, but you also want to avoid blindlessly increasing test coverage, crossing your fingers and cluelessly hoping you prevented a bug somewhere or sometime. You need to focus on what's important.
 
-In most cases, this means business value and by this, I mean money. Sorry, that is brutally uninspirational, but it is true for most paid work, even for NGOs or your own startup. I know this does not sound very idealistic,
+In most cases, this means business value and by this, I mean money. Sorry, that is brutally uninspirational, but it is true for most paid work, even for NGOs or your own startup. I know, this does not sound very idealistic and of course a company has a product vision rather than a vision to make money, but any company must survive economcally, and if you want to support your company in fulfilling their vision, it might be helpful to consider this as well, if only somewhere in the back of your mind.
 
-T he thing that might make you feel better, is that you can be a good programmer—and a professional and that can be your own motivation. At least, it is for me.
+Just one personal side note; I do not want to suggest that your motivation should be driven by monetary considerations. Personally, I want to see a more wholesome world and I happen to be greatly interested in computer technology, I am myself not driven by maximising profits, but for the arguments of the previous paragraphs, I take joy in being a good programmer, a realist—and a professional.
 
-So to show what this means, let's go back to our practical example.
-
-## Business value + The Practical example = What to test
+## The Practical example + Business value = What to test
 
 Let's have a look again and try to figure out what's important here
 
@@ -74,7 +72,7 @@ function MyPageFooter({ title, text }) {
 }
 ```
 
-Let's start with line `6`, the link to the imprint. In Germany, every website is legally obliged to display a link to your company's imprint on every page. So you might have stake holders in your company that need this be be there. Let's write a test for this in Jest:
+Let's start with line `6`, the link to the imprint. In Germany, every website is legally obliged to display a link to your company's imprint on every page. So you might have stake holders in your company who need this be be there. Let's write a test for this in Jest:
 
 ```jsx
 // MyPageFooter.spec.js
@@ -89,11 +87,11 @@ describe("MyPageFooter", () => {
 });
 ```
 
-This will make sure the links is _there_ and points to the expeceted url. When you, 6 months later, or one of your colleagues change the code of this component, it is ensured this one stays here.
+This will make sure the links is _there_ and points to the expeceted url. When you, 6 months later, or one of your colleagues change the code of this component, it is ensured this one stays intact as needed, which to me, really is the major benefit of testing. You probably know this will work when you implement this the first time, but you want to make sure this will not break when everybody has forgotten about this in the future.
 
-Lines `7-8`: For the purpose of demonstration, let's assume, your product people think those should be there, but your PO agrees, this is really not critical for our business. So we write no tests for this.
+Lines `7-8`, the social links to Twitter and Facebook: For the purpose of demonstration, let's assume, your product people think those should be there, but your PO agrees, this is really not critical for our business. If those break, your business will not lose a lot of its money. So we write no tests for this.
 
-Line `9`, hiring. Your company is in desperate need of software developers and marketing gurus. Your PO knows, this one has to be there. We're gonna write a test.
+Line `9`, hiring. Your company is in desperate need of 10x developers, marketing gurus and social media experts. Your PO has decided, this is important, so we're gonna write a test for it.
 
 ```jsx
 // MyPageFooter.spec.js
@@ -108,7 +106,7 @@ describe("MyPageFooter", () => {
 });
 ```
 
-Line `10`, the LinksToRelatedCompanies: Your business owns more than one page. The colleagues from SEO make it clear we need to link to their website. So we write a test to make sure when our code changes, we get notified if we forget about this.
+Line `10`, the LinksToRelatedCompanies: Your company is part of a SEO network. The colleagues from SEO make it clear we need to link to their website. So we write a test to make sure when our code changes, we get notified if we mess this up.
 
 ```jsx
 // MyPageFooter.spec.js
@@ -129,7 +127,15 @@ describe("MyPageFooter", () => {
 
 ## What this means
 
-As you can see from these three examples, it does not quite matter if the test are integration tests (testing for a link in our component or one included through `<LinksToRelatedCompanies />`) or they test code from the component at hand, the point is to test things that we are critical for our business. Code coverage is also not important here.
+There does not seem to be any rocket science involved in this.
+
+As you can see from these three examples, it does not quite matter if the test are considered unit tests, or integration tests. You could extrapolate that to E2E tests or any other test as well. You would write the test that is needed to ensure a business requirement works and keeps working in the future. Code coverage is no metric here at all. You do not gain confidence because of a number of coverage, but because you ensured your product is not at risk, because your business is not at risk.
+
+Also notice the things you did not test, in this case the social media links. Imagine someone changed the URL of your facebook page, that link in the footer would go nowhere. Do you think someone would notice? If noone notices, do you think it was important?
+
+## Orientation, computer science and a good sleep
+
+You will also gain something just as important. You can now have a way of reasoning about tests. In a PR, do you want to have a furioous
 
 The importance of this is, that you can now reason about what parts of your code you need to test. Avoiding too many tests, creating an appropriate testing pyramid and keeping your agility when moving your project forward are all side effects of this. You will also conform to principles of software architecture like the [Single-responsibility principle](https://en.wikipedia.org/wiki/Single-responsibility_principle) which allow you to move your project forward without exerting more effort than needed.
 
