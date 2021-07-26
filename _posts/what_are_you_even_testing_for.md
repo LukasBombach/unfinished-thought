@@ -1,6 +1,6 @@
 ---
 title: "What are you even testing for?"
-description: ""
+description: "On arguing about what to test, rather than building a geometric shape"
 date: "2021-07-26T00:00:00.322Z"
 ---
 
