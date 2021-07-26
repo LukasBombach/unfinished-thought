@@ -37,7 +37,7 @@ const Excerpt = styled("blockquote", {
 export const Teaser: VFC<{ post: PostPreview }> = ({ post }) => (
   <Article>
     <Title key={post.slug}>
-      <Link href={`/posts/${post.slug}`}>{post.title}</Link>
+      <Link href={`/${post.slug}`}>{post.title}</Link>
     </Title>
     <Excerpt>{post.description}</Excerpt>
   </Article>
