@@ -31,6 +31,26 @@ const Content = styled("section", {
     fontFamily: "serif",
     paddingBottom: "1em",
   },
+  "& a": {
+    color: "#ffa083",
+    textDecoration: "underline",
+  },
+  "& pre": {
+    // backgroundColor: "#2d3748",
+    // overflowX: "scroll",
+    // width: "100%",
+    // fontSize: 16,
+
+    color: "#e2e8f0",
+    backgroundColor: "#2d3748",
+    overflowX: "auto",
+    fontSize: 16,
+    lineHeight: "1.7142857",
+    marginTop: "1.7142857em",
+    marginBottom: "1.7142857em",
+    borderRadius: ".375rem",
+    padding: ".8571429em 1.1428571em",
+  },
 });
 
 const BlogEntry: VFC<{ post: Post }> = ({ post }) => {
@@ -38,6 +58,7 @@ const BlogEntry: VFC<{ post: Post }> = ({ post }) => {
     <>
       <Head>
         <title>{post.title} - Lukas Bombach</title>
+
         <link
           rel="preload"
           href="https://unpkg.com/prismjs@0.0.1/themes/prism-okaidia.css"
@@ -48,6 +69,7 @@ const BlogEntry: VFC<{ post: Post }> = ({ post }) => {
           rel="stylesheet"
         />
       </Head>
+
       <Navigation>
         <LinkBack href="/">&larr; Back to posts overview</LinkBack>
       </Navigation>
