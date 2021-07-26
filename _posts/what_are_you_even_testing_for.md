@@ -4,7 +4,9 @@ description: ""
 date: "2021-07-26T00:00:00.322Z"
 ---
 
-As a followup on [Kent C. Dodds' post "Write tests. Not too many. Mostly integration."](https://kentcdodds.com/blog/write-tests) I want to reiterate the question which tests to write and which tests not to write. All of what this post says is correct, but when writing tests for a react component, a library or your application's architecture, arguments about the testing pyramid or code coverage will not tell you what part of your current feature you actually need to test and which parts you can ignore. You will also not get a feeling of confidence that your application will have no bugs.
+As a followup on [Kent C. Dodds' post "Write tests. Not too many. Mostly integration."](https://kentcdodds.com/blog/write-tests) I want to reiterate the question which tests to write and which tests not to write.
+
+All of what this post says is correct, but when writing tests for a react component, a library or application, arguments about the testing pyramid or code coverage cannot give you guidance on which parts of the code infront of you would actually test and which parts you would leave untested.
 
 ## A Practical example
 
@@ -20,15 +22,17 @@ function MyPageFooter({ title, text }) {
       <a href="http://twitter.com/OurCompany">OurCompany on Twitter</a>
       <a href="http://facebook.com/OurCompany">Like us in Facebook</a>
       <a href="/jobs">We're hiring!</a>
-      <CompanyNetwork />
+      <LinksToRelatedCompanies />
     </footer>
   );
 }
 ```
 
-How would you test this? One classic argument would be that you don't really test UI so much. According to the testing pyramid your should barely write any tests here as UI is typically prone to change a lot. You could also argue that there is not much going on here and write a snapshot test for the entire component and be done.
+How would you test this? One classic argument would be that you don't really test UI so much. According to the testing pyramid you should barely write any tests here as UI is typically prone to change a lot. You could also argue that there is not much going on here, write a snapshot test for the entire component and be consider your tests complete.
 
-The first version would satisfy claims about the testing pyramid the latter version would bump test coverage to 100%. None of these paradigms can give you any specific confidence (or guidance) what to actually do here. Would you test if the component wraps its content in a `<footer />` tag? Should you test that you integrated the `<CompanyNetwork>`? What about the other links? The testing pyramid and coverage provide no way of reasoning about this.
+The first version would satisfy claims about the testing pyramid the latter version would bump test coverage to 100%. None of these paradigms can give you any specific confidence (or guidance) what your should actually do here.
+
+Would you test if the component wraps its content in a `<footer />` tag? Should you test that you integrated the `<LinksToRelatedCompanies>`? What about the other links? The testing pyramid and coverage provide no way of reasoning about this.
 
 I want to shine a different light on this: Business Value.
 
@@ -62,7 +66,7 @@ function MyPageFooter({ title, text }) {
       <a href="http://twitter.com/OurCompany">OurCompany on Twitter</a>
       <a href="http://facebook.com/OurCompany">Like us in Facebook</a>
       <a href="/jobs">We're hiring!</a>
-      <CompanyNetwork />
+      <LinksToRelatedCompanies />
     </footer>
   );
 }
@@ -102,7 +106,7 @@ describe("MyPageFooter", () => {
 });
 ```
 
-Line `10`, the CompanyNetwork: Your business owns more than one page. The colleagues from SEO make it clear we need to link to their website. So we write a test to make sure when our code changes, we get notified if we forget about this.
+Line `10`, the LinksToRelatedCompanies: Your business owns more than one page. The colleagues from SEO make it clear we need to link to their website. So we write a test to make sure when our code changes, we get notified if we forget about this.
 
 ```jsx
 // MyPageFooter.spec.js
@@ -123,7 +127,7 @@ describe("MyPageFooter", () => {
 
 ## What this means
 
-As you can see from these three examples, it does not quite matter if the test are integration tests (testing for a link in our component or one included through `<CompanyNetwork />`) or they test code from the component at hand, the point is to test things that we are critical for our business. Code coverage is also not important here.
+As you can see from these three examples, it does not quite matter if the test are integration tests (testing for a link in our component or one included through `<LinksToRelatedCompanies />`) or they test code from the component at hand, the point is to test things that we are critical for our business. Code coverage is also not important here.
 
 The importance of this is, that you can now reason about what parts of your code you need to test. Avoiding too many tests, creating an appropriate testing pyramid and keeping your agility when moving your project forward are all side effects of this. You will also conform to principles of software architecture like the [Single-responsibility principle](https://en.wikipedia.org/wiki/Single-responsibility_principle) which allow you to move your project forward without exerting more effort than needed.
 
