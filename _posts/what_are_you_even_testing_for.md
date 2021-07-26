@@ -135,9 +135,9 @@ Also notice the things you did not test, in this case the social media links. Im
 
 ## Orientation, computer science and a good sleep
 
-You will also gain something just as important. You can now have a way of reasoning about tests. In a PR, do you want to have a furioous
+You will also gain something just as important. You can now have a way of reasoning about tests. About what is important, what may be missing and what may be too much. And you can still have a discussion of the best _way_ to test this, meaning unit, integration, E2E, or any other way.
 
-The importance of this is, that you can now reason about what parts of your code you need to test. Avoiding too many tests, creating an appropriate testing pyramid and keeping your agility when moving your project forward are all side effects of this. You will also conform to principles of software architecture like the [Single-responsibility principle](https://en.wikipedia.org/wiki/Single-responsibility_principle) which allow you to move your project forward without exerting more effort than needed.
+To come back to Kent's point on not writing too many tests, it is just as important to discuss what is not important enough it test. Going through this way of reasoning, you will enter a path close to the [Single-responsibility principle](https://en.wikipedia.org/wiki/Single-responsibility_principle), where the amout of tests you need to change
 
 ## Finalizing the pattern
 
