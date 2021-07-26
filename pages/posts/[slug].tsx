@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { getPostBySlug, getAllPosts } from "lib/api";
 import markdownToHtml from "lib/markdown";
 import { styled } from "lib/styled";
@@ -35,13 +36,25 @@ const Content = styled("section", {
 const BlogEntry: VFC<{ post: Post }> = ({ post }) => {
   return (
     <>
+      <Head>
+        <title>{post.title} - Lukas Bombach</title>
+        <link
+          rel="preload"
+          href="https://unpkg.com/prismjs@0.0.1/themes/prism-okaidia.css"
+          as="script"
+        />
+        <link
+          href="https://unpkg.com/prismjs@0.0.1/themes/prism-okaidia.css"
+          rel="stylesheet"
+        />
+      </Head>
       <Navigation>
         <LinkBack href="/">&larr; Back to posts overview</LinkBack>
       </Navigation>
 
       <Main>
         <Headline>{post.title}</Headline>
-        {post.content}
+        <Content dangerouslySetInnerHTML={{ __html: post.content }} />
       </Main>
     </>
   );
@@ -51,12 +64,6 @@ export async function getStaticProps({ params }) {
   const post = getPostBySlug(params.slug, ["title", "date", "content"]);
   const content = await markdownToHtml(post.content || "");
 
-  return {
-    props: {
-      ...post,
-      content,
-    },
-  };
   return {
     props: {
       post: {
