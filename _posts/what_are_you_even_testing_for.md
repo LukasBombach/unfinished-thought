@@ -186,6 +186,6 @@ describe("SEO Requirements", () => {
 
 Of course each block would hold more than one test and the tests themselves can probably be optimized in many ways (I do know of `getByText` :) ), but this should demonstrate the idea behind this approach.
 
-I need to mention [Patrick](https://twitter.com/patrickdahms) here once more and express my huge thanks and appreciation. He started the conversation and drove it into the direction we ended in.
+I need to mention [Patrick](https://twitter.com/patrickdahms) here once more and express my huge thanks and appreciation. He started the conversation and drove it into the direction we ended in. The ideas I expressed are more of my summary of our conversations and I certainly did not come up with those alone. If anything, I was nudged towards them.
 
-If you would like to talk to me about this article you can post on the [GitHub Discussions](https://github.com/LukasBombach/unfinished-thought/discussions) of this blog or @ me on Twitter as [@luke_schmuke](https://twitter.com/luke_schmuke).
+If you would like to talk to me about this article you can post on the [GitHub Discussions](https://github.com/LukasBombach/unfinished-thought/discussions) of this blog or @ me on Twitter as [@luke_schmuke](https://twitter.com/luke_schmuke), Patrick is [@patrickdahms](https://twitter.com/patrickdahms).
