@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { Header } from "components/Header";
 import { SocialLinks } from "components/SocialLinks";
 import { TeaserList } from "components/TeaserList";
@@ -10,6 +11,9 @@ import type { PostPreview } from "components/Teaser";
 const Home: VFC<{ posts: PostPreview[] }> = ({ posts }) => {
   return (
     <>
+      <Head>
+        <title>Unfinished thought - A blog by Lukas Bombach</title>
+      </Head>
       <Header />
       <SocialLinks />
       <TeaserList posts={posts} />
