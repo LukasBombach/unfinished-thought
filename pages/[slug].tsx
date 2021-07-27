@@ -56,6 +56,18 @@ const BlogEntry: VFC<{ post: Post }> = ({ post }) => {
       <Head>
         <title>{post.title} - Lukas Bombach</title>
 
+        <meta content={post.description} name="description" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content={post.title} />
+        <meta property="og:description" content={post.description} />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:image" content={post.cardImage} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@luke_schmuke" />
+        <meta name="twitter:title" content={post.title} />
+        <meta name="twitter:description" content={post.description} />
+        <meta name="twitter:image" content={post.cardImage} />
+
         <link
           rel="preload"
           href="https://unpkg.com/prismjs@0.0.1/themes/prism-okaidia.css"

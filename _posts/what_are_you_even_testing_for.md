@@ -1,7 +1,8 @@
 ---
 title: "What are you even testing for?"
-description: "On arguing about what to test, rather than building a geometric shape"
+description: "On arguing about what to test, rather than building a geometric shapes"
 date: "2021-07-26T00:00:00.322Z"
+cardImage: "/og/what_are_you_even_testing_for.png"
 ---
 
 As a followup on [Kent C. Dodds' post "Write tests. Not too many. Mostly integration."](https://kentcdodds.com/blog/write-tests) I want to reiterate the question which tests to write and which tests not to write.
