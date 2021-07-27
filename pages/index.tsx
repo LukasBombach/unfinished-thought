@@ -1,6 +1,7 @@
 import { Header } from "components/Header";
 import { SocialLinks } from "components/SocialLinks";
 import { TeaserList } from "components/TeaserList";
+import { JustOnePost } from "components/JustOnePost";
 import { getAllPosts } from "lib/api";
 
 import type { VFC } from "react";
@@ -12,6 +13,7 @@ const Home: VFC<{ posts: PostPreview[] }> = ({ posts }) => {
       <Header />
       <SocialLinks />
       <TeaserList posts={posts} />
+      <JustOnePost />
     </>
   );
 };

@@ -78,6 +78,10 @@ const BlogEntry: VFC<{ post: Post }> = ({ post }) => {
         <Headline>{post.title}</Headline>
         <Content dangerouslySetInnerHTML={{ __html: post.content }} />
       </Main>
+
+      <Navigation>
+        <LinkBack href="/">&larr; Back to posts overview</LinkBack>
+      </Navigation>
     </>
   );
 };
