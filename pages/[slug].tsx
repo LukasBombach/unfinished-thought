@@ -61,12 +61,19 @@ const BlogEntry: VFC<{ post: Post }> = ({ post }) => {
         <meta property="og:site_name" content={post.title} />
         <meta property="og:description" content={post.description} />
         <meta property="og:title" content={post.title} />
-        <meta property="og:image" content={post.cardImage} />
+        <meta
+          property="og:image"
+          content={`https://unfinished-thought.vercel.app/${post.cardImage}`}
+        />
+        <meta property="og:image:alt" content={post.description} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@luke_schmuke" />
         <meta name="twitter:title" content={post.title} />
         <meta name="twitter:description" content={post.description} />
-        <meta name="twitter:image" content={post.cardImage} />
+        <meta
+          name="twitter:image"
+          content={`https://unfinished-thought.vercel.app/${post.cardImage}`}
+        />
 
         <link
           rel="preload"
