@@ -138,13 +138,13 @@ Also notice the things you did not test, in this case the social media links. Im
 
 You will also gain something just as important. You can now have a way of reasoning about tests. About what is important, what may be missing and what may be too much. And you can still have a discussion of the best _way_ to test this, meaning unit, integration, E2E, smoke, or any other way.
 
-To come back to Kent's point on not writing too many tests, it is just as important to discuss what is not important enough for a test. Going through this way of reasoning, you will enter a path close to the [Single-responsibility principle](https://en.wikipedia.org/wiki/Single-responsibility_principle), where the amout of tests you need to change have a linear regression with changes in your product. In human terms: Whenever someone decides to change the product, you only need to change as many tests as how big the change of your product has been.
+To come back to Kent's point on not writing too many tests, it is just as important to discuss what is not important enough for a test. Going through this way of reasoning, you will enter a path close to the [Single-responsibility principle](https://en.wikipedia.org/wiki/Single-responsibility_principle), where the amout of tests you need to change have a linear regression with changes in your product. In human terms: Whenever someone decides to change the product, you only need to change as many tests proportional to how much you change the product.
 
-And lastly, and probably most importantly: You might just be able to sleep peacfully. I keep reading something along the lines of "tests give you confidence that your software is free of bugs". I will argue that this is a myth. Do you feel confident because you wrote tests? If no, it is not because your are a bad developer.
+And lastly, and _probably most importantly_: You might just be able to sleep peacfully. I keep reading something along the lines of "tests give you confidence that your software is free of bugs". I will argue that this is a myth. Do you feel confident because you wrote tests? If no, it is not because your are a bad developer? No.
 
 It is in fact because you are a sane person.
 
-The only project your can be _sure_ has no bug at all is a single file without any contents and `0Kb` of filesize. You cannot aim for confidence of knowing there are now bugs. I would argue this will not be in your cards. What you can aim for though, is that you considered the important parts of your project and you would get notified when they break. One extra tip here is that you talk to others about what's important, what to test and how to test it. To me, this is the best way of gaining confidence I did things right and getting a good sleep, even on the weekend.
+The only project your can be _sure_ has no bug at all is a single file, empty, `0Kb` of filesize. You cannot aim for confidence of knowing there are now bugs. This is not in your cards. What you can aim for though, is that you considered the important parts of your project and you would get notified when they break. One extra tip here is that you talk to others about what's important, what to test and how to test it. To me, this is the best way of gaining confidence I did things right and getting a good sleep, even on the weekend.
 
 ## Finalizing the pattern
 
@@ -187,6 +187,6 @@ describe("SEO Requirements", () => {
 
 Of course each block would hold more than one test and the tests themselves can probably be optimized in many ways (I do know of `getByText` :) ), but this should demonstrate the idea behind this approach.
 
-I need to mention [Patrick](https://twitter.com/patrickdahms) here once more and express my huge thanks and appreciation. He started the conversation and drove it into the direction we ended in. The ideas I expressed are more of my summary of our conversations and I certainly did not come up with those alone. If anything, I was nudged towards them.
+I need to mention [Patrick](https://twitter.com/patrickdahms) here once more and express my huge thanks and appreciation. He started the conversation and drove it into the direction we ended in. The ideas I expressed are more of a summary of our conversations and I certainly did not come up with those alone. If anything, I was nudged towards them by Patrick.
 
 If you would like to talk to me about this article you can post on the [GitHub Discussions](https://github.com/LukasBombach/unfinished-thought/discussions) of this blog or @ me on Twitter as [@luke_schmuke](https://twitter.com/luke_schmuke), Patrick is [@patrickdahms](https://twitter.com/patrickdahms).
