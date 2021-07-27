@@ -96,7 +96,12 @@ const BlogEntry: VFC<{ post: Post }> = ({ post }) => {
 };
 
 export async function getStaticProps({ params }) {
-  const post = getPostBySlug(params.slug, ["title", "date", "content"]);
+  const post = getPostBySlug(params.slug, [
+    "title",
+    "date",
+    "content",
+    "cardImage",
+  ]);
   const content = await markdownToHtml(post.content || "");
 
   return {
