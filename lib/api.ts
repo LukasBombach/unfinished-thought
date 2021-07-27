@@ -2,7 +2,13 @@ import fs from "fs";
 import { join } from "path";
 import matter from "gray-matter";
 
-type Field = "slug" | "title" | "date" | "ogImage" | "description" | "content";
+type Field =
+  | "slug"
+  | "title"
+  | "date"
+  | "description"
+  | "content"
+  | "cardImage";
 
 export type Post<SelectedFields extends Field = Field> = {
   [F in SelectedFields]: string;

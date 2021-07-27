@@ -10,36 +10,32 @@ const List = styled("ul", {
   display: "grid",
   gridAutoFlow: "column",
   justifyContent: "start",
-  gap: "$16",
+  gap: "$12",
+  color: "$faded",
 });
 
 const Item = styled("li", {});
 
-const Twitter = styled("a", {
-  color: "#55ACEE",
+const Link = styled("a", {
+  "&:hover": {
+    color: "$darkBlue",
+  },
 });
 
-const GitHub = styled("a", {
-  color: "#333333",
-});
-
-const LinkedIn = styled("a", {
-  color: "#1884BB",
-});
-
-export const SocialLinks: VFC<{ className?: string }> = ({ className }) => (
+export const SocialLinks: VFC = () => (
   <Aside>
-    <List className={className}>
+    <List>
+      <Item>Find me on</Item>
       <Item>
-        <Twitter href="https://twitter.com/luke_schmuke">Twitter</Twitter>
+        <Link href="https://twitter.com/luke_schmuke">Twitter</Link>
       </Item>
       <Item>
-        <GitHub href="https://github.com/LukasBombach/">GitHub</GitHub>
+        <Link href="https://github.com/LukasBombach/">GitHub</Link>
       </Item>
       <Item>
-        <LinkedIn href="https://www.linkedin.com/in/lukas-bombach-010b8196/">
+        <Link href="https://www.linkedin.com/in/lukas-bombach-010b8196/">
           LinkedIn
-        </LinkedIn>
+        </Link>
       </Item>
     </List>
   </Aside>

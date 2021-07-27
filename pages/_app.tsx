@@ -1,7 +1,11 @@
 import { global } from "lib/styled";
 
 const resetCss = global({
-  "html, body, h1, h2, p, blockquote, ul, li": { margin: 0, padding: 0 },
+  "html, body, h1, h2, p, blockquote, ul, li, div, pre": {
+    margin: 0,
+    padding: 0,
+    boxSizing: "border-box",
+  },
   // This is terrible, don't do this! haha!
   "#__next": {
     fontFamily: "sans-serif",

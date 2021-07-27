@@ -9,6 +9,7 @@ export const { styled, css, global, keyframes, getCssString, theme } =
         faded: "#66788f",
       },
       space: {
+        12: "12px",
         16: "16px",
         24: "24px",
         32: "32px",
