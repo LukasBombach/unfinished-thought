@@ -36,20 +36,17 @@ const Content = styled("section", {
     textDecoration: "underline",
   },
   "& pre": {
-    // backgroundColor: "#2d3748",
-    // overflowX: "scroll",
-    // width: "100%",
-    // fontSize: 16,
-
     color: "#e2e8f0",
     backgroundColor: "#2d3748",
-    overflowX: "auto",
     fontSize: 16,
-    lineHeight: "1.7142857",
-    marginTop: "1.7142857em",
-    marginBottom: "1.7142857em",
-    borderRadius: ".375rem",
-    padding: ".8571429em 1.1428571em",
+    borderRadius: 6,
+    padding: "$16",
+    overflow: "auto",
+    width: "calc(100vw - 48px)", // todo this is probably the worst code humanity has ever seen
+    maxWidth: 720,
+  },
+  "& .remark-highlight": {
+    paddingBottom: "1em",
   },
 });
 

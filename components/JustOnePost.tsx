@@ -1,10 +1,15 @@
 import { styled } from "lib/styled";
 
-const Em = styled("em", {
+const Text = styled("p", {
   color: "$faded",
-  fontSize: "$18",
+  opacity: 0.3,
+  fontSize: 12,
 });
 
 import type { VFC } from "react";
 
-export const JustOnePost: VFC = () => <Em>That's it, just one post so far</Em>;
+export const JustOnePost: VFC = () => (
+  <footer>
+    <Text>That's it, just one post so far</Text>
+  </footer>
+);
