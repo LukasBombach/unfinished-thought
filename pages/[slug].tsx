@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { getPostBySlug, getAllPosts } from "lib/api";
 import markdownToHtml from "lib/markdown";
-import { styled } from "lib/styled";
+import { styled } from "stitches.config";
 
 import type { VFC } from "react";
 import type { Post } from "lib/api";

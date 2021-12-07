@@ -1,4 +1,4 @@
-import { styled } from "lib/styled";
+import { styled } from "stitches.config";
 
 const Text = styled("p", {
   color: "$faded",
@@ -10,6 +10,6 @@ import type { VFC } from "react";
 
 export const JustOnePost: VFC = () => (
   <footer>
-    <Text>That's it, just one post so far</Text>
+    <Text>That\'s it, just one post so far</Text>
   </footer>
 );

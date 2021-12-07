@@ -1,6 +1,6 @@
-import { global } from "lib/styled";
+import { globalCss } from "stitches.config";
 
-const resetCss = global({
+const resetCss = globalCss({
   "html, body, h1, h2, p, blockquote, ul, li, div, pre": {
     margin: 0,
     padding: 0,

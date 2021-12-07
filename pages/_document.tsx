@@ -1,14 +1,15 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
-import { getCssString } from "lib/styled";
+import React from "react";
+import NextDocument, { Html, Head, Main, NextScript } from "next/document";
+import { getCssText } from "stitches.config";
 
-export default class MyDocument extends Document {
+export default class Document extends NextDocument {
   render() {
     return (
       <Html lang="en">
         <Head>
           <style
             id="stitches"
-            dangerouslySetInnerHTML={{ __html: getCssString() }}
+            dangerouslySetInnerHTML={{ __html: getCssText() }}
           />
         </Head>
         <body>

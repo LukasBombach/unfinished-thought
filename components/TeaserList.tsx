@@ -1,5 +1,5 @@
 import { Teaser } from "components/Teaser";
-import { styled } from "lib/styled";
+import { styled } from "stitches.config";
 
 import type { VFC } from "react";
 import type { PostPreview } from "components/Teaser";
