@@ -9,7 +9,7 @@ export const Main = styled("main", {
   gap: "$32",
 });
 
-export const TeaserList: VFC<{ posts: PostPreview[] }> = ({ posts }) => {
+export const Posts: VFC<{ posts: PostPreview[] }> = ({ posts }) => {
   return (
     <Main>
       {posts.map(post => (

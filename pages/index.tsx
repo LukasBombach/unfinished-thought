@@ -1,6 +1,6 @@
 import { Layout } from "components/Layout";
 import { Header } from "components/Header";
-import { TeaserList } from "components/TeaserList";
+import { Posts } from "components/Posts";
 import { JustOnePost } from "components/JustOnePost";
 
 import type { NextPage } from "next";
@@ -10,7 +10,7 @@ const Home: NextPage<{ posts: PostPreview[] }> = ({ posts = [] }) => {
   return (
     <Layout>
       <Header />
-      <TeaserList posts={posts} />
+      <Posts posts={posts} />
       <JustOnePost />
     </Layout>
   );
