@@ -6,7 +6,7 @@ import type { AppProps } from "next/app";
 
 const App: VFC<AppProps> = ({ Component, pageProps }) => (
   <>
-    <PageTitle title="Unfinished thought - A blog by Lukas Bombach" />
+    <PageTitle />
     <DefaultCss />
     <Component {...pageProps} />
   </>
