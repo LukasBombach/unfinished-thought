@@ -6,12 +6,12 @@ import { Header } from "components/Header";
 import type { NextPage } from "next";
 
 const Post: NextPage = () => {
-  const router = useRouter();
-  const { postName } = router.query;
+  const q = useRouter().query;
+  const postName = Array.isArray(q.postName) ? q.postName[0] : q.postName;
 
   return (
     <Layout>
-      <PageTitle title={postName as string} />
+      <PageTitle pageName={postName} />
       <Header />
       <p>Post: {postName}</p>
     </Layout>
