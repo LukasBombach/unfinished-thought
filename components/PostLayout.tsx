@@ -29,12 +29,10 @@ const components = {
 
 export const PostLayout: FC<{ meta: PostMeta }> = ({ meta, children }) => {
   return (
-    <MDXProvider components={components}>
-      <Wrapper>
-        <PageTitle pageName={meta.title} />
-        <h1>{meta.title}</h1>
-        {children}
-      </Wrapper>
-    </MDXProvider>
+    <Wrapper>
+      <PageTitle pageName={meta.title} />
+      <h1>{meta.title}</h1>
+      <MDXProvider components={components}>{children}</MDXProvider>
+    </Wrapper>
   );
 };
