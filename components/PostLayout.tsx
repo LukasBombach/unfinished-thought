@@ -1,3 +1,4 @@
+import { MDXProvider } from "@mdx-js/react";
 import { PageTitle } from "components/PageTitle";
 import { styled } from "stitches.config";
 
@@ -10,19 +11,30 @@ export interface PostMeta {
   cardImage: `/og/${string}.png`;
 }
 
-export const Wrapper = styled("div", {
+const Wrapper = styled("div", {
   display: "grid",
   gap: "$32",
-  padding: "$48 $16",
+  padding: "$48 $40",
   margin: "0 auto",
   maxWidth: 720,
 });
 
+const Paragraph = styled("p", {
+  lineHeight: "$16",
+});
+
+const components = {
+  p: Paragraph,
+};
+
 export const PostLayout: FC<{ meta: PostMeta }> = ({ meta, children }) => {
   return (
-    <Wrapper>
-      <PageTitle pageName={meta.title} />
-      {children}
-    </Wrapper>
+    <MDXProvider components={components}>
+      <Wrapper>
+        <PageTitle pageName={meta.title} />
+        <h1>{meta.title}</h1>
+        {children}
+      </Wrapper>
+    </MDXProvider>
   );
 };
