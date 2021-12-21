@@ -43,6 +43,10 @@ const Wrapper = styled("div", {
   [`& ${Headline} + ${Paragraph}`]: {
     paddingTop: "$8",
   },
+
+  'code[class*="language-"], pre[class*="language-"]': {
+    fontSize: "0.9rem",
+  },
 });
 
 const components = {
