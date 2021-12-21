@@ -1,6 +1,7 @@
 import { MDXProvider } from "@mdx-js/react";
 import { PageTitle } from "components/PageTitle";
 import { styled } from "stitches.config";
+import "prism-material-themes/themes/material-default.css";
 
 import type { FC } from "react";
 
