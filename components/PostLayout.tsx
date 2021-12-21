@@ -12,16 +12,13 @@ export interface PostMeta {
   cardImage: `/og/${string}.png`;
 }
 
-const Wrapper = styled("div", {
-  display: "grid",
-  gap: "$32",
-  padding: "$48 $40",
-  margin: "0 auto",
-  maxWidth: 720,
-});
-
 const Title = styled("h1", {
   fontSize: "2.2rem",
+  lineHeight: "1.3",
+});
+
+const Headline = styled("h2", {
+  fontSize: "1.8rem",
   lineHeight: "1.3",
 });
 
@@ -29,9 +26,23 @@ const Paragraph = styled("p", {
   lineHeight: "1.9",
 });
 
-const Headline = styled("h2", {
-  fontSize: "1.8rem",
-  lineHeight: "1.3",
+const Wrapper = styled("div", {
+  padding: "$48 $40",
+  margin: "0 auto",
+  maxWidth: 720,
+  color: "$darkBlue",
+
+  [`& ${Headline}`]: {
+    paddingTop: "$40",
+  },
+
+  [`& ${Paragraph}`]: {
+    paddingTop: "1em",
+  },
+
+  [`& ${Headline} + ${Paragraph}`]: {
+    paddingTop: "$8",
+  },
 });
 
 const components = {

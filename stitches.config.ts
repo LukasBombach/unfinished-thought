@@ -12,6 +12,7 @@ export const { styled, getCssText, globalCss } = createStitches({
       sans: "Helvetica, sans-serif",
     },
     space: {
+      8: "8px",
       12: "12px",
       16: "16px",
       24: "24px",
