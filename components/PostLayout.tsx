@@ -26,6 +26,7 @@ const Paragraph = styled("p", {
   lineHeight: "1.9",
 });
 
+// [1] todo baaad hack
 const Wrapper = styled("div", {
   padding: "$48 $40",
   margin: "0 auto",
@@ -46,17 +47,7 @@ const Wrapper = styled("div", {
 
   'code[class*="language-"], pre[class*="language-"]': {
     fontSize: "0.9rem",
-    margin: 0,
-    padding: "1rem 0 0 0",
-    background: "transparent",
-
-    "& code": {
-      background: "#263238",
-      display: "block",
-      padding: "2em 0 2em 2em",
-      width: "100%",
-      overflowX: "auto",
-    },
+    marginTop: "1rem", // [1]
   },
 });
 
