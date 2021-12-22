@@ -12,7 +12,7 @@ const applyDefaultCss = globalCss({
   },
   a: { color: "inherit", textDecoration: "none" },
   ul: { listStyle: "none" },
-  pre: { width: "100%", overflowX: "auto" },
+  pre: { width: "100%" },
 });
 
 export const DefaultCss: VFC = () => {

@@ -37,7 +37,7 @@ const Wrapper = styled("div", {
   },
 
   [`& ${Paragraph}`]: {
-    paddingTop: "1em",
+    paddingTop: "1rem",
   },
 
   [`& ${Headline} + ${Paragraph}`]: {
@@ -46,6 +46,17 @@ const Wrapper = styled("div", {
 
   'code[class*="language-"], pre[class*="language-"]': {
     fontSize: "0.9rem",
+    margin: 0,
+    padding: "1rem 0 0 0",
+    background: "transparent",
+
+    "& code": {
+      background: "#263238",
+      display: "block",
+      padding: "2em 0 2em 2em",
+      width: "100%",
+      overflowX: "auto",
+    },
   },
 });
 
@@ -59,7 +70,6 @@ export const PostLayout: FC<{ meta: PostMeta }> = ({ meta, children }) => {
     <Wrapper>
       <PageTitle pageName={meta.title} />
       <Title>{meta.title}</Title>
-
       <MDXProvider components={components}>{children}</MDXProvider>
     </Wrapper>
   );
