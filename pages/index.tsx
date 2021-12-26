@@ -9,9 +9,11 @@ import type { NextPage, GetStaticProps, InferGetStaticPropsType } from "next";
 interface PostMeta {
   title: string;
   description: string;
-  // date: Date;
+  date: Date;
   relativeUrl: string;
 }
+
+type PostMetaWithoutDate = Omit<PostMeta, "date">;
 
 const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ posts }) => {
   return (
@@ -23,21 +25,28 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ posts 
   );
 };
 
-export const getStaticProps: GetStaticProps<{ posts: PostMeta[] }> = async context => {
-  const files = await readdir(join(process.cwd(), "pages"));
-  const mdxFiles = files.map(fileName => join(process.cwd(), "pages", fileName)).filter(n => n.endsWith(".mdx"));
-  const posts = await Promise.all(mdxFiles.map(p => getPostMeta(p)));
+export const getStaticProps: GetStaticProps<{ posts: PostMetaWithoutDate[] }> = async context => {
+  const files = await readdir(pages());
+  const paths = files.map(f => pages(f));
+  const mdxFiles = paths.filter(p => p.endsWith(".mdx"));
+  const postsAsPromised = mdxFiles.map(p => getPostMeta(p));
+  const unsortedPosts = await Promise.all(postsAsPromised);
+  const sortedPosts = [...unsortedPosts].sort((a, b) => (a.date > b.date ? -1 : 1));
+  const posts = sortedPosts.map(({ date, ...post }) => post);
   return { props: { posts } };
 };
 
 // todo assertions on the PostMeta types
 async function getPostMeta(path: string): Promise<PostMeta> {
-  const relativePath = relative(join(process.cwd(), "pages"), path);
-  const post = await import(`./${relativePath}`);
+  const post = await import("./" + relative(pages(), path));
   const relativeUrl = basename(path, ".mdx");
-  const { title, description } = post?.meta ?? {};
-  const postMeta = { title, description, relativeUrl };
+  const { title, description, date } = post?.meta ?? {};
+  const postMeta = { title, description, date, relativeUrl };
   return postMeta;
+}
+
+function pages(path = ""): string {
+  return join(process.cwd(), "pages", path);
 }
 
 export default Home;
