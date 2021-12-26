@@ -10,7 +10,7 @@ interface PostMeta {
   title: string;
   description: string;
   date: Date;
-  relativeUrl: string;
+  url: string;
 }
 
 type PostMetaWithoutDate = Omit<PostMeta, "date">;
@@ -19,7 +19,12 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ posts 
   return (
     <Layout>
       <Header />
-      <pre>{JSON.stringify(posts, null, 2)}</pre>
+      {posts.map(post => (
+        <a key={post.url} href={post.url}>
+          <pre>{JSON.stringify(post, null, 2)}</pre>
+        </a>
+      ))}
+
       <JustOnePost />
     </Layout>
   );
@@ -39,9 +44,9 @@ export const getStaticProps: GetStaticProps<{ posts: PostMetaWithoutDate[] }> = 
 // todo assertions on the PostMeta types
 async function getPostMeta(path: string): Promise<PostMeta> {
   const post = await import("./" + relative(pages(), path));
-  const relativeUrl = basename(path, ".mdx");
+  const url = "/" + basename(path, ".mdx");
   const { title, description, date } = post?.meta ?? {};
-  const postMeta = { title, description, date, relativeUrl };
+  const postMeta = { title, description, date, url };
   return postMeta;
 }
 
