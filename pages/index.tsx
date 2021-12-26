@@ -1,5 +1,5 @@
 import { readdir } from "fs/promises";
-import { basename, join } from "path";
+import { basename, join, relative } from "path";
 import { Layout } from "components/Layout";
 import { Header } from "components/Header";
 import { JustOnePost } from "components/JustOnePost";
@@ -9,7 +9,7 @@ import type { NextPage, GetStaticProps, InferGetStaticPropsType } from "next";
 interface PostMeta {
   title: string;
   description: string;
-  date: Date;
+  // date: Date;
   relativeUrl: string;
 }
 
@@ -32,10 +32,11 @@ export const getStaticProps: GetStaticProps<{ posts: PostMeta[] }> = async conte
 
 // todo assertions on the PostMeta types
 async function getPostMeta(path: string): Promise<PostMeta> {
-  const post = await import(path);
+  const relativePath = relative(join(process.cwd(), "pages"), path);
+  const post = await import(`./${relativePath}`);
   const relativeUrl = basename(path, ".mdx");
-  const { title, description, date } = post?.meta ?? {};
-  const postMeta = { title, description, date, relativeUrl };
+  const { title, description } = post?.meta ?? {};
+  const postMeta = { title, description, relativeUrl };
   return postMeta;
 }
 
