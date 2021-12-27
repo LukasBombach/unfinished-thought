@@ -16,15 +16,21 @@ export interface PostMeta {
 const Layout = styled("main", {
   display: "grid",
   gap: "$24",
+  gridTemplateColumns: "100%",
   padding: "$48 $40",
   margin: "0 auto",
   maxWidth: 720,
   color: "$darkBlue",
 });
 
+// [1] todo this is not working at all for some reason
 const Title = styled("h1", {
   fontSize: "2.2rem",
   lineHeight: "1.3",
+  // [1]
+  "@desktop": {
+    fontSize: "3rem",
+  },
 });
 
 const Headline = styled("h2", {

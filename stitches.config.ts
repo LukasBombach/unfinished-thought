@@ -28,5 +28,8 @@ export const { styled, getCssText, globalCss } = createStitches({
     lineHeights: {
       "16": "1.6",
     },
+    media: {
+      desktop: "(min-width: 1024px)",
+    },
   },
 });
