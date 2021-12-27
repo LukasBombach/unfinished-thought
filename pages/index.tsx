@@ -2,6 +2,7 @@ import { readdir } from "fs/promises";
 import { basename, join, relative } from "path";
 import { Layout } from "components/Layout";
 import { Header } from "components/Header";
+import { Teaser } from "components/Teaser";
 import { JustOnePost } from "components/JustOnePost";
 
 import type { NextPage, GetStaticProps, InferGetStaticPropsType } from "next";
@@ -10,7 +11,7 @@ interface PostMeta {
   title: string;
   description: string;
   date: Date;
-  url: string;
+  href: string;
 }
 
 type PostMetaWithoutDate = Omit<PostMeta, "date">;
@@ -20,11 +21,8 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ posts 
     <Layout>
       <Header />
       {posts.map(post => (
-        <a key={post.url} href={post.url}>
-          <pre>{JSON.stringify(post, null, 2)}</pre>
-        </a>
+        <Teaser key={post.href} post={post} />
       ))}
-
       <JustOnePost />
     </Layout>
   );
@@ -44,9 +42,9 @@ export const getStaticProps: GetStaticProps<{ posts: PostMetaWithoutDate[] }> = 
 // todo assertions on the PostMeta types
 async function getPostMeta(path: string): Promise<PostMeta> {
   const post = await import("./" + relative(pages(), path));
-  const url = "/" + basename(path, ".mdx");
+  const href = "/" + basename(path, ".mdx");
   const { title, description, date } = post?.meta ?? {};
-  const postMeta = { title, description, date, url };
+  const postMeta = { title, description, date, href };
   return postMeta;
 }
 
