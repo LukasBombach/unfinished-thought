@@ -48,15 +48,15 @@ const Link = styled("a", {
 
 // [1] todo baaad hack
 const Text = styled("div", {
-  [`& ${Headline}`]: {
+  [`& ${Headline}:not(:first-child)`]: {
     paddingTop: "$40",
   },
 
-  [`& ${Paragraph}`]: {
+  [`& ${Paragraph}:not(:first-child)`]: {
     paddingTop: "1rem",
   },
 
-  [`& ${Headline} + ${Paragraph}`]: {
+  [`& ${Headline}:not(:first-child) + ${Paragraph}`]: {
     paddingTop: "$8",
   },
 

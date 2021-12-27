@@ -7,7 +7,7 @@ export interface PostCreditProps {
   date: Date;
 }
 
-const Wrapper = styled("div", {
+const Wrapper = styled("a", {
   display: "grid",
   gap: "0 $16",
   alignItems: "center",
@@ -30,7 +30,7 @@ const Time = styled("time", {
 export const PostCredit: VFC<PostCreditProps> = ({ date }) => {
   const dateFormat = { weekday: "long", year: "numeric", month: "long", day: "numeric" } as const;
   return (
-    <Wrapper>
+    <Wrapper href="/">
       <ProfileImage src={portrait.src} alt="Portrait of Lukas Bombach" />
       <Text>
         Lukas Bombach, <Time>{date.toLocaleDateString("en-US", dateFormat)}</Time>

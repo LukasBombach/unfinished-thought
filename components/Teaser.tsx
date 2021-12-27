@@ -28,12 +28,11 @@ const Link = styled("a", {
 });
 
 const Excerpt = styled("blockquote", {
-  fontFamily: "serif",
   display: "-webkit-box",
   WebkitBoxOrient: "vertical",
   WebkitLineClamp: 2,
   overflow: "hidden",
-  opacity: 0.9, // todo make this a color
+  color: "$faded",
 });
 
 export const Teaser: VFC<{ post: Post }> = ({ post }) => (
