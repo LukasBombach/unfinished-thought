@@ -1,5 +1,6 @@
 import { MDXProvider } from "@mdx-js/react";
 import { PageTitle } from "components/PageTitle";
+import { PostCredit } from "components/PostCredit";
 import { styled } from "stitches.config";
 import "prism-material-themes/themes/material-default.css";
 
@@ -11,6 +12,15 @@ export interface PostMeta {
   date: Date;
   cardImage: `/og/${string}.png`;
 }
+
+const Layout = styled("main", {
+  display: "grid",
+  gap: "$24",
+  padding: "$48 $40",
+  margin: "0 auto",
+  maxWidth: 720,
+  color: "$darkBlue",
+});
 
 const Title = styled("h1", {
   fontSize: "2.2rem",
@@ -27,12 +37,7 @@ const Paragraph = styled("p", {
 });
 
 // [1] todo baaad hack
-const Wrapper = styled("div", {
-  padding: "$48 $40",
-  margin: "0 auto",
-  maxWidth: 720,
-  color: "$darkBlue",
-
+const Text = styled("div", {
   [`& ${Headline}`]: {
     paddingTop: "$40",
   },
@@ -58,10 +63,13 @@ const components = {
 
 export const PostLayout: FC<{ meta: PostMeta }> = ({ meta, children }) => {
   return (
-    <Wrapper>
+    <Layout>
       <PageTitle pageName={meta.title} />
       <Title>{meta.title}</Title>
-      <MDXProvider components={components}>{children}</MDXProvider>
-    </Wrapper>
+      <PostCredit date={meta.date} />
+      <Text>
+        <MDXProvider components={components}>{children}</MDXProvider>
+      </Text>
+    </Layout>
   );
 };
