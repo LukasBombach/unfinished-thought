@@ -10,6 +10,7 @@ export interface Post {
 
 const Article = styled("article", {
   position: "relative",
+  color: "$darkBlue",
 });
 
 const Title = styled("h2", {
@@ -28,7 +29,6 @@ const Link = styled("a", {
 
 const Excerpt = styled("blockquote", {
   fontFamily: "serif",
-  color: "$darkBlue",
   display: "-webkit-box",
   WebkitBoxOrient: "vertical",
   WebkitLineClamp: 2,
