@@ -42,6 +42,10 @@ const Paragraph = styled("p", {
   lineHeight: "1.9",
 });
 
+const Link = styled("a", {
+  color: "$tangerine",
+});
+
 // [1] todo baaad hack
 const Text = styled("div", {
   [`& ${Headline}`]: {
@@ -65,6 +69,7 @@ const Text = styled("div", {
 const components = {
   p: Paragraph,
   h2: Headline,
+  a: Link,
 };
 
 export const PostLayout: FC<{ meta: PostMeta }> = ({ meta, children }) => {
