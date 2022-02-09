@@ -1,4 +1,4 @@
-import { styled } from "lib/styled";
+import { styled } from "stitches.config";
 import portrait from "public/lukasbombach.jpg";
 
 import type { VFC } from "react";

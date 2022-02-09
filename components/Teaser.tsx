@@ -1,12 +1,16 @@
-import { styled } from "lib/styled";
+import { styled } from "stitches.config";
 
 import type { VFC } from "react";
-import type { Post } from "lib/api";
 
-export type PostPreview = Post<"title" | "slug" | "description">;
+export interface Post {
+  title: string;
+  description: string;
+  href: string;
+}
 
 const Article = styled("article", {
   position: "relative",
+  color: "$darkBlue",
 });
 
 const Title = styled("h2", {
@@ -15,7 +19,6 @@ const Title = styled("h2", {
 });
 
 const Link = styled("a", {
-  textDecoration: "none",
   "&::before": {
     content: "''",
     position: "absolute",
@@ -25,19 +28,17 @@ const Link = styled("a", {
 });
 
 const Excerpt = styled("blockquote", {
-  fontFamily: "serif",
-  color: "$darkBlue",
   display: "-webkit-box",
   WebkitBoxOrient: "vertical",
   WebkitLineClamp: 2,
   overflow: "hidden",
-  opacity: 0.9, // todo make this a color
+  color: "$faded",
 });
 
-export const Teaser: VFC<{ post: PostPreview }> = ({ post }) => (
+export const Teaser: VFC<{ post: Post }> = ({ post }) => (
   <Article>
-    <Title key={post.slug}>
-      <Link href={`/${post.slug}`}>{post.title}</Link>
+    <Title>
+      <Link href={post.href}>{post.title}</Link>
     </Title>
     <Excerpt>{post.description}</Excerpt>
   </Article>
