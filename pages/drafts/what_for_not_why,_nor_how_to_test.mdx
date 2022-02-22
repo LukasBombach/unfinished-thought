@@ -1,0 +1,63 @@
+import { PostLayout } from "components/PostLayout";
+
+export const meta = {
+  title: "What for—not why, nor how to test",
+  description: "About deciding which tests to write without drawing geometric shapes",
+  date: new Date("-"),
+  cardImage: "/og/the_right_approach_to_testing.png",
+};
+
+export default ({ children }) => <PostLayout meta={meta}>{children}</PostLayout>;
+
+Often, when you read on how to write test for software, you will learn about two things:
+
+- Why to test, elaborating that it is _very, very_ important to make sure your software really works
+- How to test, usually by depicting a triangle shape, which for some reason is called the test _pyramid_
+
+The gist of it is that by writing tests, you can automate repetetive tasks and ensure that your softwares
+still works as intended when it grows and changes over time.
+
+The test automation pyramid generally orders tests by volatility and the effort it takes to implement or run
+them. If they are very volatile and effortful to implement or run, write less of them (top of the pyramid)—and
+vice versa. Usually this goes along with an explanation of testing methods, like unit tests, integration
+tests and end-to-end tests and how the realte on the volatility-effort-scale.
+
+Of course that is a tl;dr summary and the teachings are more diverse, elaborate and thought-through than
+given justice here, but I do find that there is a general notion to explain reasons and methodology
+with an occasional light on pragmatism.
+
+## Academia-Reality-Gap
+
+I find the reality of testing feels miles apart from what I would read about it in books or articles online.
+
+Apart from a team's attitude on how critical tests are for your project, sitting infront of your screen,
+having just finished all ACs for your Jira-ticket and feeling proud as a peacock while marvelling at the
+beauty and genius of your code, all you have left to do is write some tests to get your PR though review.
+
+> A heckler yells from the audience: "What a about TDD?"<br />
+> The presenter asks, "Did you ever do it?"<br />
+> The heckler silently sits down again<br />
+>
+> TDD is a topic for another day
+
+Back to the computer screen—how will you write those tests.
+
+Understanding why you would write tests does not help you very much. You want to know your software works.
+Duh, who doesn't. But how? Of course! The pyramid! So you have to decide if you should write unit tests,
+acceptance tests, api tests, ui tests... the possiblities and their names are endless. Understanding what
+they are and how much work it is to implement them still leaves me without confidence that I know I am
+doing the right thing while I need to decide to write a test for this of for that.
+
+How do I decide whether I should unit test an `onClick` handler or if the signup proccess works from a to
+z in a single run of an end-to-end test? Those things might come up in the same PR.
+
+## What for, not why
+
+There is a subtle difference in asking "what for" and not "why". Let's take a small detour into psychology.
+
+Sigmund Freud, you know, the misogynist drug addict and founder of psychoanalysis, was not the sole founding
+father of psychology. Alfred Adler had—in some regards—completely contradictory views that Freud and although
+and eventualy broke with him.
+
+A key of Adler's individual psychology—as compared to Freud's psychoanalysis—is to ask "what for" rather than
+wny.
